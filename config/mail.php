@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    // 'default' => env('MAIL_MAILER', 'smtp'),
+    'default' => env('MAIL_MAILER', 'mailhog'),
 
     /*
     |--------------------------------------------------------------------------
@@ -34,6 +35,15 @@ return [
     */
 
     'mailers' => [
+        'mailhog' => [
+            'transport' => 'smtp',
+            'host' => '127.0.0.1',     // Mailhog SMTP server host
+            'port' => 1025,            // Mailhog SMTP server port
+            'encryption' => null,      // No encryption is used for Mailhog
+            'username' => null,        // No username is required for Mailhog
+            'password' => null,        // No password is required for Mailhog
+        ],
+
         'smtp' => [
             'transport' => 'smtp',
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
